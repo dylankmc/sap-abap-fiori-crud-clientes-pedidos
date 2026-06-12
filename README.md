@@ -89,16 +89,17 @@ Este repositório foi criado como projeto de portfólio para demonstrar conhecim
 ## Arquitetura da Solução
 
 ```text
-Tabelas de Clientes e Pedidos
-        |
-        |
-SAP Gateway / Serviço OData / SEGW
-        |
-        |
-Backend ABAP / CDS Views
-        |
-        |
 SAP Fiori / SAPUI5 App
+        |
+        | Consumo OData
+        |
+SAP Gateway / Serviço OData
+        |
+        |
+Backend ABAP / DPC_EXT / CDS Views
+        |
+        |
+Tabelas ZTB_CLIENTE e ZTB_PEDIDO
 ```
 
 ---
