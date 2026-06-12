@@ -17,7 +17,7 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: https://vm73.4hub.cloud:44373
+            url: https://seu-servidor-sap.example.com
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
