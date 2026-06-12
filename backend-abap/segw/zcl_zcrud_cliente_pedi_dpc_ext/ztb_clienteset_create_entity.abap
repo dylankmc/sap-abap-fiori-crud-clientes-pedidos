@@ -1,7 +1,5 @@
   method ztb_clienteset_create_entity.
 
-  BREAK-POINT.
-
   DATA ls_entity TYPE zcl_zcrud_cliente_pedi_mpc=>ts_ztb_cliente.
   DATA ls_db     TYPE ztb_cliente.
 
