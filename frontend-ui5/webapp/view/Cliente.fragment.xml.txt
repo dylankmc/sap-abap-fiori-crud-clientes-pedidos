@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <Dialog title="{= ${dialogModel>/isEdit} ? 'Editar Cliente' : 'Novo Cliente'}" contentWidth="400px">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="Código" required="true" />
+                    <Input value="{dialogModel>/ClientId}" enabled="{= !${dialogModel>/isEdit} }" />
+                    <Label text="Nome" required="true" />
+                    <Input value="{dialogModel>/Nome}" />
+                    <Label text="E-mail" />
+                    <Input value="{dialogModel>/Email}" type="Email" />
+                    <Label text="Status" />
+                    <Select selectedKey="{dialogModel>/Status}">
+                        <core:Item key="A" text="Ativo" />
+                        <core:Item key="I" text="Inativo" />
+                    </Select>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="Salvar" type="Emphasized" press=".onConfirmarCliente" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancelar" press=".onFecharDialogCliente" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

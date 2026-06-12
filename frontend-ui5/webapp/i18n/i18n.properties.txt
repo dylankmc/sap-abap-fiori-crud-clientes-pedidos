@@ -1,0 +1,5 @@
+appTitle=CRUD Clientes e Pedidos
+
+appDescription=Gestão de Clientes e Pedidos
+
+title=CRUD Clientes e Pedidos

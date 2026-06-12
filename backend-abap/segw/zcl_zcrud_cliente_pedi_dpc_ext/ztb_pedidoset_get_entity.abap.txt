@@ -1,0 +1,26 @@
+  method ztb_pedidoset_get_entity.
+
+  DATA lv_cliente_id TYPE ztb_pedido-client_id.
+  DATA lv_pedido_id  TYPE ztb_pedido-pedido_id.
+
+  READ TABLE it_key_tab INTO DATA(ls_key_cliente)
+    WITH KEY name = 'CLIENT_ID'.
+
+  IF sy-subrc = 0.
+    lv_cliente_id = ls_key_cliente-value.
+  ENDIF.
+
+  READ TABLE it_key_tab INTO DATA(ls_key_pedido)
+    WITH KEY name = 'PEDIDO_ID'.
+
+  IF sy-subrc = 0.
+    lv_pedido_id = ls_key_pedido-value.
+  ENDIF.
+
+  SELECT SINGLE *
+    FROM ztb_pedido
+    INTO CORRESPONDING FIELDS OF @er_entity
+    WHERE client_id = @lv_cliente_id
+      AND pedido_id  = @lv_pedido_id.
+
+  endmethod.

@@ -1,0 +1,7 @@
+  method ztb_pedidoset_get_entityset.
+
+  SELECT *
+    FROM ztb_pedido
+    INTO CORRESPONDING FIELDS OF TABLE @et_entityset.
+
+  endmethod.

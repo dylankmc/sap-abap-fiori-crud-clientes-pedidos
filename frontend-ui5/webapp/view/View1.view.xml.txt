@@ -1,0 +1,110 @@
+<mvc:View
+    controllerName="zcrud.zcrudclientepedido.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    displayBlock="true">
+
+    <f:DynamicPage id="dynamicPageId" headerExpanded="true">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Gestão de Clientes e Pedidos" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        
+        <f:content>
+            <IconTabBar id="idIconTabBar" select=".onTabSelect" stretchContentHeight="true" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter icon="sap-icon://group" text="Clientes" key="clientes">
+                        <Table id="tabelaClientes" 
+                        mode="SingleSelectMaster"
+                        growing="false"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        items="{
+                        path: '/ZTB_CLIENTESet',
+                        parameters: {
+                        '$top': '9999',
+                        'countMode': 'None'
+           }
+       }">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Lista de Clientes" level="H2" />
+                                    <ToolbarSpacer />
+                                    <Button icon="sap-icon://add" text="Novo Cliente" type="Emphasized" press=".onNovoCliente" />
+                                    <Button icon="sap-icon://edit" text="Editar" press=".onEditarCliente" />
+                                    <Button icon="sap-icon://delete" text="Excluir" type="Reject" press=".onExcluirCliente" />
+                                    <Button icon="sap-icon://refresh" press=".onAtualizarClientes" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column hAlign="Begin"><Text text="Código" /></Column>
+                                <Column><Text text="Nome" /></Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true"><Text text="E-mail" /></Column>
+                                <Column hAlign="Center"><Text text="Status" /></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <ObjectIdentifier title="{ClientId}" />
+                                        <Text text="{Nome}" />
+                                        <Text text="{Email}" />
+                                        <ObjectStatus 
+                                            text="{= ${Status} === 'A' ? 'Ativo' : 'Inativo' }" 
+                                            state="{= ${Status} === 'A' ? 'Success' : 'Error' }" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+
+                    <IconTabFilter icon="sap-icon://sales-order" text="Pedidos" key="pedidos">
+                        <Table id="tabelaPedidos" 
+                        mode="SingleSelectMaster"
+                        growing="false"
+                        items="{
+                         path: '/ZTB_PEDIDOSet',
+                         parameters: {
+                        '$top': '9999',
+                        'countMode': 'None'
+           }
+       }">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Lista de Pedidos" level="H2" />
+                                    <ToolbarSpacer />
+                                    <Button icon="sap-icon://add" text="Novo Pedido" type="Emphasized" press=".onNovoPedido" />
+                                    <Button icon="sap-icon://edit" text="Editar" press=".onEditarPedido" />
+                                    <Button icon="sap-icon://delete" text="Excluir" type="Reject" press=".onExcluirPedido" />
+                                    <Button icon="sap-icon://refresh" press=".onAtualizarPedidos" />
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column><Text text="Pedido" /></Column>
+                                <Column><Text text="Cliente" /></Column>
+                                <Column><Text text="Descrição" /></Column>
+                                <Column hAlign="End"><Text text="Valor" /></Column>
+                                <Column hAlign="Center"><Text text="Status" /></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text text="{PedidoId}" />
+                                        <Text text="{ClientId}" />
+                                        <Text text="{Descricao}" />
+                                        <ObjectNumber number="{Valor}" unit="{Moeda}" />
+                                        <ObjectStatus 
+                                            text="{Status}" 
+                                            state="{= ${Status} === 'A' ? 'Success' : 'Warning' }" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

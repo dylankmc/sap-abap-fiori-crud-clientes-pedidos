@@ -1,0 +1,11 @@
+CLASS zbp_i_cliente DEFINITION
+  PUBLIC
+  ABSTRACT
+  FINAL
+  FOR BEHAVIOR OF zi_cliente.
+
+ENDCLASS.
+
+CLASS zbp_i_cliente IMPLEMENTATION.
+
+ENDCLASS.

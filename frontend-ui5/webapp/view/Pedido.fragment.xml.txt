@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <Dialog title="{= ${dialogModel>/isEdit} ? 'Editar Pedido' : 'Novo Pedido'}" contentWidth="400px">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label text="Cód. Cliente" required="true" />
+                    <Input value="{dialogModel>/ClientId}" enabled="{= !${dialogModel>/isEdit} }" />
+                    <Label text="Cód. Pedido" required="true" />
+                    <Input value="{dialogModel>/PedidoId}" enabled="{= !${dialogModel>/isEdit} }" />
+                    <Label text="Descrição" />
+                    <Input value="{dialogModel>/Descricao}" />
+                    <Label text="Valor" />
+                    <Input value="{dialogModel>/Valor}" type="Number" description="{dialogModel>/Moeda}" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="Salvar" type="Emphasized" press=".onConfirmarPedido" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancelar" press=".onFecharDialogPedido" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

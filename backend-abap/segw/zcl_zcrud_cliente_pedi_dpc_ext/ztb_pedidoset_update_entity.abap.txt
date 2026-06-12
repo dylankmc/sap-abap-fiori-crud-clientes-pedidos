@@ -1,0 +1,15 @@
+METHOD ztb_pedidoset_update_entity.
+  DATA: ls_pedido TYPE ztb_pedido.
+
+  io_data_provider->read_entry_data( IMPORTING es_data = ls_pedido ).
+
+  MODIFY ztb_pedido FROM ls_pedido.
+
+  IF sy-subrc <> 0.
+    RAISE EXCEPTION TYPE /iwbep/cx_mgw_busi_exception
+      EXPORTING
+        textid = /iwbep/cx_mgw_busi_exception=>business_error.
+  ENDIF.
+
+  er_entity = ls_pedido.
+ENDMETHOD.

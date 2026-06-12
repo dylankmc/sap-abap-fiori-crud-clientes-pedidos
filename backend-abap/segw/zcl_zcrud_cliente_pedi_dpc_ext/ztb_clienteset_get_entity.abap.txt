@@ -1,0 +1,16 @@
+METHOD ztb_clienteset_get_entity.
+  DATA lv_cliente_id TYPE ztb_cliente-client_id.
+
+  READ TABLE it_key_tab INTO DATA(ls_key)
+    WITH KEY name = 'ClientId'.
+
+  IF sy-subrc = 0.
+    lv_cliente_id = ls_key-value.
+  ENDIF.
+
+  SELECT SINGLE *
+    FROM ztb_cliente
+    INTO CORRESPONDING FIELDS OF @er_entity
+    WHERE client_id = @lv_cliente_id.
+
+ENDMETHOD.

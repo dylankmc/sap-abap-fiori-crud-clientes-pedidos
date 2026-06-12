@@ -1,0 +1,5 @@
+@EndUserText.label: 'Serviço Fiori - Clientes e Pedidos'
+define service ZUI_CLIENTE_PEDIDO {
+  expose ZC_CLIENTE as Clientes;
+  expose ZC_PEDIDO as Pedidos;
+}
